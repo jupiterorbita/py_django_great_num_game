@@ -61,7 +61,6 @@ def process_form(request):
           request.session['result'] = "too low!"
           request.session['color'] = 'red'
         
-        
         elif user_guess > cpu_num:
           print(f'TOO HIGH! user:{user_guess} > {cpu_num}')
           request.session['result'] = "too high!"
@@ -73,13 +72,10 @@ def process_form(request):
           request.session['color'] = 'green'
           # request.session.clear()
 
-          
       else:
         # user did not input a number!
         request.session['result'] = "ENTER a number from 1-100"
 
-
-  
   return redirect('/')
 
 # ----------------------------------------------
