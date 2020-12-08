@@ -6,28 +6,15 @@ import random # import the random module
 # ----------------------------------------------
 def index(request):
   print("\n-------- index '/'")
-  
   rand_num = request.session.get('the_random_num_in_session', random.randint(1,100))
-  # request.session['the_random_num_in_session'] = random.randint(1,100)
   request.session['the_random_num_in_session'] = rand_num
-  
   print('\n -- rand int in session? -> ', rand_num , '\n')
   
   # set a default result to display
-  if 'result' in request.session:
-    pass
-  else:
+  if 'result' not in request.session:
     request.session['result'] = ''
-    
-  # # set default color
-  # if 'color' in request.session:
-  #   pass
-  # else:
-  #   request.session['color'] = 'aqua'
-  # alt way:
-  request.session.get('color', 'aqua')
-  
-  
+
+  request.session.get('color', 'lightyellow')
   print(request.session)
   print('the_random_num_in_session = ', request.session['the_random_num_in_session'])
   
@@ -83,7 +70,7 @@ def process_form(request):
 # ----------------------------------------------
 def clear_session(request):
   request.session.clear()
-  if "the_random_num_in_session" in request.session:
-    del request.session['the_random_num_in_session']
+  # if "the_random_num_in_session" in request.session:
+  #   del request.session['the_random_num_in_session']
   return redirect('/')
     
